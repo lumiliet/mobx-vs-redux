@@ -1,0 +1,28 @@
+html {
+    box-sizing: border-box;
+    font-size: 100% / 16 * 10; // This makes 1rem = 10px, where 16px is the the default font size in many browsers.
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans";
+    color: black;
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}

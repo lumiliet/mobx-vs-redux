@@ -1,0 +1,15 @@
+
+.horizontal-split {
+    display: flex;
+    width: 100%;
+    padding: 3rem 2rem 10rem 2rem;
+
+    background-color: $color-ink;
+    color: white;
+
+    min-height: 100vh;
+
+    & > * {
+        flex: 1;
+    }
+}

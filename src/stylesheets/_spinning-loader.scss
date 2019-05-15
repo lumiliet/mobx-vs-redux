@@ -1,0 +1,27 @@
+
+.spinning-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 20rem;
+    height: 8rem;
+
+    &::after {
+        content: "";
+        border: 0.5rem solid $color-posy;
+        border-top: 0.5rem solid white;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        animation: rotate linear infinite 1s;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
