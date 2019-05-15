@@ -1,6 +1,10 @@
 import { Ingredient, Recipe } from "../../dataTypes/dataTypes";
 import { Action, AddRecipesAction, IncrementIngredientCounterAction } from "./actions";
-import { FETCH_RECIPES_FINISH, FETCH_RECIPES_START, INCREMENT_INGREDIENT_COUNT } from "./actionTypes";
+import {
+    FETCH_RECIPES_FINISH,
+    FETCH_RECIPES_START,
+    INCREMENT_INGREDIENT_COUNT
+} from "./actionTypes";
 import defaultState from "./defaultState";
 import { ReduxState } from "./reduxState";
 
@@ -41,6 +45,7 @@ function incrementIngredientCounterReducer(
     const { recipesById } = state;
     const recipe = recipesById[recipeId];
     const ingredient = recipe.ingredients[ingredientIndex];
+
     const replacedIngredients: Ingredient[] = [
         ...recipe.ingredients.slice(0, ingredientIndex),
         {
@@ -50,16 +55,14 @@ function incrementIngredientCounterReducer(
         ...recipe.ingredients.slice(ingredientIndex + 1)
     ];
 
-    const newRecipe = {
-        ...recipe,
-        ingredients: replacedIngredients
-    };
-
     return {
         ...state,
         recipesById: {
             ...state.recipesById,
-            [recipeId]: newRecipe
+            [recipeId]: {
+                ...recipe,
+                ingredients: replacedIngredients
+            }
         }
     };
 }
