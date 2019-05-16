@@ -1,14 +1,15 @@
 import { observer } from "mobx-react-lite";
 import React, { FC } from "react";
-import { Ingredient, Recipe } from "../../dataTypes/dataTypes";
+import { Recipe } from "../../common/dataTypes/dataTypes";
+import IngredientItem from "./IngredientItem";
 
 interface RecipeProps {
     recipe: Recipe;
 }
 
-const RecipeComponent: FC<RecipeProps> = observer(function RecipeComponent({ recipe }) {
+const RecipeItem: FC<RecipeProps> = observer(function RecipeComponent({ recipe }) {
     const ingredientElements = recipe.ingredients.map(ingredient => (
-        <IngredientComponent key={ingredient.id} ingredient={ingredient} />
+        <IngredientItem key={ingredient.id} ingredient={ingredient} />
     ));
     return (
         <li className="recipe">
@@ -25,18 +26,4 @@ const RecipeComponent: FC<RecipeProps> = observer(function RecipeComponent({ rec
     );
 });
 
-export default RecipeComponent;
-
-interface IngredientProps {
-    ingredient: Ingredient;
-}
-
-const IngredientComponent: FC<IngredientProps> = observer(function IngredientComponent({
-    ingredient
-}) {
-    return (
-        <li className="recipe__ingredient" onClick={() => ingredient.count++}>
-            {ingredient.count} {ingredient.title}
-        </li>
-    );
-});
+export default RecipeItem;

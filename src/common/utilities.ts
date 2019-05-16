@@ -1,6 +1,6 @@
 import { Recipe } from "./dataTypes/dataTypes";
 
-export function searchRecipes(recipes: Recipe[], recipeSearchValue: string): Recipe[] {
+export function searchRecipes(recipes: Recipe[], searchQuery: string): Recipe[] {
     return recipes.filter(recipe => {
         const searchBasis = (
             recipe.title +
@@ -8,11 +8,11 @@ export function searchRecipes(recipes: Recipe[], recipeSearchValue: string): Rec
             recipe.ingredients.map(ingredient => ingredient.title).join(" ")
         ).toLowerCase();
 
-        return recipeSearchValue
+        return searchQuery
             .toLowerCase()
             .split(" ")
             .filter(a => a)
-            .every(searchTerm => searchBasis.includes(searchTerm));
+            .every(searchWord => searchBasis.includes(searchWord));
     });
 }
 

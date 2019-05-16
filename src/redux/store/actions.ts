@@ -1,10 +1,9 @@
-import { fetchRandomRecipes } from "../../api/mealDBApi";
-import {
-    FETCH_RECIPES_START,
-    FETCH_RECIPES_FINISH,
-    INCREMENT_INGREDIENT_COUNT
-} from "./actionTypes";
-import { Recipe } from "../../dataTypes/dataTypes";
+import { Recipe } from "../../common/dataTypes/dataTypes";
+import { fetchRandomRecipes } from "../../common/api/mealDBApi";
+
+export const FETCH_RECIPES_START = "FETCH_RECIPES_START";
+export const FETCH_RECIPES_FINISH = "FETCH_RECIPES_FINISH";
+export const INCREMENT_INGREDIENT_COUNT = "INCREMENT_INGREDIENT_COUNT";
 
 export type Action = BasicAction | AddRecipesAction | IncrementIngredientCounterAction;
 

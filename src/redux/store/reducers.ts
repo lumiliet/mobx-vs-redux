@@ -1,12 +1,17 @@
-import { Ingredient, Recipe } from "../../dataTypes/dataTypes";
 import { Action, AddRecipesAction, IncrementIngredientCounterAction } from "./actions";
 import {
     FETCH_RECIPES_FINISH,
     FETCH_RECIPES_START,
     INCREMENT_INGREDIENT_COUNT
-} from "./actionTypes";
-import defaultState from "./defaultState";
+} from "./actions";
 import { ReduxState } from "./reduxState";
+import { Recipe, Ingredient } from "../../common/dataTypes/dataTypes";
+
+const defaultState: ReduxState = {
+    recipesById: {},
+    recipeIds: [],
+    isLoading: false
+};
 
 export function rootReducer(state: ReduxState = defaultState, action: Action) {
     switch (action.type) {

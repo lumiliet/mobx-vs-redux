@@ -1,17 +1,18 @@
-import React from "react";
-import { Ingredient, Recipe } from "../../dataTypes/dataTypes";
+import React, { memo } from "react";
+import { Recipe } from "../../common/dataTypes/dataTypes";
+import IngredientItem from "./IngredientItem";
 
 interface RecipeProps {
     recipe: Recipe;
-    onIngredientClick: (ingredientIndex: number) => void;
 }
 
-function RecipeComponent({ recipe, onIngredientClick }: RecipeProps) {
+function RecipeItem({ recipe }: RecipeProps) {
     const ingredientElements = recipe.ingredients.map((ingredient, index) => (
-        <IngredientComponent
+        <IngredientItem
             key={ingredient.id}
             ingredient={ingredient}
-            onClick={() => onIngredientClick(index)}
+            recipeId={recipe.id}
+            ingredientIndex={index}
         />
     ));
     return (
@@ -29,17 +30,4 @@ function RecipeComponent({ recipe, onIngredientClick }: RecipeProps) {
     );
 }
 
-export default RecipeComponent;
-
-interface IngredientProps {
-    ingredient: Ingredient;
-    onClick: () => void;
-}
-
-function IngredientComponent({ ingredient, onClick }: IngredientProps) {
-    return (
-        <li className="recipe__ingredient" onClick={onClick}>
-            {ingredient.count} {ingredient.title}
-        </li>
-    );
-}
+export default memo(RecipeItem);
