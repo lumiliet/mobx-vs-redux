@@ -1,5 +1,5 @@
 import React from "react";
-import MobXPanel from "./mobX/components/MobXPanel";
+import MobXPanel from "./mobx/components/MobXPanel";
 import ReduxPanel from "./redux/components/ReduxPanel";
 
 export default function App() {
